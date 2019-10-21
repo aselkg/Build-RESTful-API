@@ -40,9 +40,9 @@ app.route("/articles")
   });
 })
 
-.post(function(req, res){
+.post(function(req, res){ // post an article
 
-const newArticle = new Article ({
+const newArticle = new Article ({ 
   title: req.body.title,
   connect: req.body.content
 });
@@ -71,7 +71,7 @@ newArticle.save(function(err){
 
 app.route("/articles/:articleTitle")
 
-.get(function(req, res){
+.get(function(req, res){  // show an article
 
   Article.findOne({title:req.params.articleTitle}, function(err, foundArticle){
     if(foundArticle) {
@@ -111,7 +111,7 @@ app.route("/articles/:articleTitle")
 })
 
 
-.delete(function(req, res){
+.delete(function(req, res){ // deleted only selected value
   Article.deleteOne(
     {title: req.params.articleTitle},
     function (err) {
